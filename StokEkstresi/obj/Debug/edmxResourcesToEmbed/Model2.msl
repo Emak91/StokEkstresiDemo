@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TestModel1StoreContainer" CdmEntityContainer="TestEntities1">
+    <EntitySetMapping Name="STI">
+      <EntityTypeMapping TypeName="TestModel1.STI">
+        <MappingFragment StoreEntitySet="STI">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IslemTur" ColumnName="IslemTur" />
+          <ScalarProperty Name="EvrakNo" ColumnName="EvrakNo" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="MalKodu" ColumnName="MalKodu" />
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+          <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+          <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+          <ScalarProperty Name="Birim" ColumnName="Birim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STK">
+      <EntityTypeMapping TypeName="TestModel1.STK">
+        <MappingFragment StoreEntitySet="STK">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MalKodu" ColumnName="MalKodu" />
+          <ScalarProperty Name="MalAdi" ColumnName="MalAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_stokListesi" FunctionName="TestModel1.Store.sp_stokListesi">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TestModel1.sp_stokListesi_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IslemTur" ColumnName="IslemTur" />
+          <ScalarProperty Name="EvrakNo" ColumnName="EvrakNo" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="MalKodu" ColumnName="MalKodu" />
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+          <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+          <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+          <ScalarProperty Name="Birim" ColumnName="Birim" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UrunGetir" FunctionName="TestModel1.Store.UrunGetir">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TestModel1.UrunGetir_Result">
+          <ScalarProperty Name="SiraNo" ColumnName="SiraNo" />
+          <ScalarProperty Name="IslemTur" ColumnName="IslemTur" />
+          <ScalarProperty Name="EvrakNo" ColumnName="EvrakNo" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="GirisMiktar" ColumnName="GirisMiktar" />
+          <ScalarProperty Name="CikisMiktar" ColumnName="CikisMiktar" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

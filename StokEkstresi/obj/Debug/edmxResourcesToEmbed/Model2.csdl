@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="STI">
+    <Key>
+      <PropertyRef Name="IslemTur" />
+      <PropertyRef Name="EvrakNo" />
+      <PropertyRef Name="Tarih" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IslemTur" Type="Int16" Nullable="false" />
+    <Property Name="EvrakNo" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tarih" Type="Int32" Nullable="false" />
+    <Property Name="MalKodu" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Miktar" Type="Decimal" Precision="25" Scale="6" Nullable="false" />
+    <Property Name="Fiyat" Type="Decimal" Precision="25" Scale="6" Nullable="false" />
+    <Property Name="Tutar" Type="Decimal" Precision="25" Scale="6" Nullable="false" />
+    <Property Name="Birim" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STK">
+    <Key>
+      <PropertyRef Name="MalKodu" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MalKodu" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MalAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="TestEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="STI" EntityType="Self.STI" />
+    <EntitySet Name="STK" EntityType="Self.STK" />
+    <FunctionImport Name="sp_stokListesi" ReturnType="Collection(TestModel1.sp_stokListesi_Result)" />
+    <FunctionImport Name="UrunGetir" ReturnType="Collection(TestModel1.UrunGetir_Result)">
+      <Parameter Name="malKodu" Mode="In" Type="String" />
+      <Parameter Name="baslangicTarihi" Mode="In" Type="DateTime" />
+      <Parameter Name="bitisTarihi" Mode="In" Type="DateTime" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_stokListesi_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int16" Name="IslemTur" Nullable="false" />
+    <Property Type="String" Name="EvrakNo" Nullable="false" MaxLength="16" />
+    <Property Type="Int32" Name="Tarih" Nullable="false" />
+    <Property Type="String" Name="MalKodu" Nullable="false" MaxLength="30" />
+    <Property Type="Decimal" Name="Miktar" Nullable="false" Precision="25" Scale="6" />
+    <Property Type="Decimal" Name="Fiyat" Nullable="false" Precision="25" Scale="6" />
+    <Property Type="Decimal" Name="Tutar" Nullable="false" Precision="25" Scale="6" />
+    <Property Type="String" Name="Birim" Nullable="false" MaxLength="4" />
+  </ComplexType>
+  <ComplexType Name="UrunGetir_Result">
+    <Property Type="Int64" Name="SiraNo" Nullable="true" />
+    <Property Type="String" Name="IslemTur" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="EvrakNo" Nullable="false" MaxLength="16" />
+    <Property Type="String" Name="Tarih" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="GirisMiktar" Nullable="true" />
+    <Property Type="Int32" Name="CikisMiktar" Nullable="true" />
+  </ComplexType>
+</Schema>
